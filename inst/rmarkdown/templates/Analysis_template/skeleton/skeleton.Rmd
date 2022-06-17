@@ -1,0 +1,28 @@
+---
+title: "Hannekes template"
+author: "Hanneke Leegwater"
+date: "`r Sys.Date()`"
+output: html_document
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Aim
+
+# Background and data sources
+## Background
+## Data sources
+
+# Analysis
+## 0. Preparations
+### Load R packages
+### Set input and output directories
+### Define functions
+
+## 1. Load data
+
+# Conclusion
