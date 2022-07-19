@@ -1,0 +1,117 @@
+---
+title: ""
+author: "Hanneke Leegwater"
+date: "`r Sys.Date()`"
+output: html_document
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Aim
+
+# Background and data sources
+
+## Background
+
+## Data sources
+
+# Analysis
+
+## 0. Preparations
+
+### Load R libraries
+
+```{r}
+library(tidyverse)
+library(mixOmics)
+library(pheatmap)
+library(cowplot)
+```
+
+### Set input and output directories
+
+Set base path of the folder that is used in the analysis
+
+```{r}
+if(Sys.getenv("USERNAME") == "leegwaterh"){
+  basePath = "C:/Users/leegwaterh/surfdrive/Projects/Lipidomics"
+} else if(Sys.getenv("USERNAME") == "hanne"){
+  basePath = "C:/Users/hanne/surfdrive/Projects/Lipidomics"
+} else{
+  basePath = normalizePath("../..")
+  stop("User unknown. Add path to code folder in the if/else loop")
+}
+str_glue("Base path is {basePath}")
+```
+
+Set input data directory.
+
+```{r}
+data_path <- file.path(basePath, "Data", "Lipidomics")
+```
+
+### Define functions
+
+```{r}
+transpose_tibble <- function(df){
+  df <- rownames_to_column(df, "rn") %>%
+    pivot_longer(!rn, names_to = "name") %>%
+    pivot_wider(name, names_from = rn) %>%
+    column_to_rownames("name")
+  return(df)
+}
+```
+
+## 1. Load data
+
+Metadata for the 2DG treatment study:
+
+```{r}
+input_file <- file.path(data_path, "metadata", "metadata_all.csv")
+metadata_2DG <- read_csv(input_file) %>%
+  filter(Study == "treatment_2DG") %>%
+  filter(cell_line != "media_only") %>%
+  unite("Treatment_group", Treatment, Time, sep = "_", remove = FALSE) %>%
+  unite("sampleName", cell_line, Time, biological_replicate, sep = "_", remove = FALSE) 
+  
+head(metadata_2DG)
+```
+
+Data from the 2DG treatment
+
+```{r}
+input_file <- file.path(data_path, "data_normalized",  "treatment_2DG", "NMC-19-005_HILIC_lipidomics_treatment_2DG_PQN.csv")
+data_2DG <- read_csv(input_file) %>%
+  column_to_rownames("Original_name")
+dim(data_2DG)
+data_2DG[1:5,1:5]
+```
+
+Metadata for the cell line panel:
+
+```{r}
+input_file <- file.path(data_path, "metadata", "metadata_all.csv")
+metadata_cell_lines <- read_csv(input_file) %>%
+  filter(Study == "Cell_line_panel") %>%
+  filter(cell_line != "media_only")
+  
+head(metadata_cell_lines)
+```
+
+Data from the cell line panel
+
+```{r}
+input_file <- file.path(data_path, "data_normalized",  "cell_lines", "NMC-19-005_HILIC_lipidomics_cell_lines_PQN.csv")
+data_cell_lines <- read_csv(input_file) %>%
+  column_to_rownames("Original_name")
+dim(data_cell_lines)
+data_cell_lines[1:5,1:5]
+```
+
+
+# Conclusion
+
+## Doubts and limitations

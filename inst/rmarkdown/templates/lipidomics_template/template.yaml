@@ -1,0 +1,4 @@
+name: Lipidomics_template
+description: >
+   For any analysis related to the lipidomics project. This template contains a bit more specifics than the general data analysis template.
+create_dir: FALSE
