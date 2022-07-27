@@ -4,23 +4,22 @@ author: "Hanneke Leegwater"
 date: "`r Sys.Date()`"
 output: html_document
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
-
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # Aim
 
 # Background and data sources
+
 ## Background
+
 ## Data sources
 
 # Analysis
+
 ## 0. Preparations
 
 ### Load R libraries
+
 ```{r}
 library(tidyverse)
 library(mixOmics)
@@ -29,7 +28,9 @@ library(cowplot)
 ```
 
 ### Set input and output directories
-#### Set base path of the folder that is used in the analysis
+
+Set base path to the project that is used in the analysis.
+
 ```{r}
 if(Sys.getenv("USERNAME") == "leegwaterh"){
   basePath = "C:/Users/leegwaterh/surfdrive/Projects"
@@ -42,9 +43,23 @@ if(Sys.getenv("USERNAME") == "leegwaterh"){
 str_glue("Base path is {basePath}")
 ```
 
+Set input data directory.
+
+```{r}
+data_path <- file.path(basePath, "Data")
+```
+
+Set output data directory.
+
+```{r}
+datestamp <- str_remove_all(Sys.Date(), "-")
+output_dir <- file.path(basePath, "Results", str_glue("{datestamp}_output"))
+```
+
 ### Define functions
 
 ## 1. Load data
 
 # Conclusion
+
 ## Doubts and limitations

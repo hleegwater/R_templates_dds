@@ -6,10 +6,6 @@ output: html_document
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Aim
 
 # Background and data sources
@@ -33,7 +29,7 @@ library(cowplot)
 
 ### Set input and output directories
 
-Set base path of the folder that is used in the analysis
+Set base path to the project that is used in the analysis.
 
 ```{r}
 if(Sys.getenv("USERNAME") == "leegwaterh"){
@@ -51,6 +47,13 @@ Set input data directory.
 
 ```{r}
 data_path <- file.path(basePath, "Data", "Lipidomics")
+```
+
+Set output data directory.
+
+```{r}
+datestamp <- str_remove_all(Sys.Date(), "-")
+output_dir <- file.path(basePath, "Results", str_glue("{datestamp}_output"))
 ```
 
 ### Define functions
@@ -105,12 +108,11 @@ Data from the cell line panel
 
 ```{r}
 input_file <- file.path(data_path, "data_normalized",  "cell_lines", "NMC-19-005_HILIC_lipidomics_cell_lines_PQN.csv")
-data_cell_lines <- read_csv(input_file) %>%
+data_cell <- read_csv(input_file) %>%
   column_to_rownames("Original_name")
-dim(data_cell_lines)
-data_cell_lines[1:5,1:5]
+dim(data_cell)
+data_cell[1:5,1:5]
 ```
-
 
 # Conclusion
 
