@@ -1,8 +1,13 @@
 ---
-title: 
+title: ""
 author: "Hanneke Leegwater"
 date: "`r Sys.Date()`"
-output: html_document
+output:   
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    df_print: paged
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
@@ -32,28 +37,26 @@ library(cowplot)
 Set base path to the project that is used in the analysis.
 
 ```{r}
-if(Sys.getenv("USERNAME") == "leegwaterh"){
-  basePath = "C:/Users/leegwaterh/surfdrive/Projects"
-} else if(Sys.getenv("USERNAME") == "hanne"){
-  basePath = "C:/Users/hanne/surfdrive/Projects"
-} else{
-  basePath = normalizePath("../..")
-  stop("User unknown. Add path to code folder in the if/else loop")
-}
+basePath = str_glue("C:/Users/{Sys.getenv('USERNAME')}/surfdrive/Projects/Lipidomics")
 str_glue("Base path is {basePath}")
+stopifnot(dir.exists(basePath))
 ```
 
 Set input data directory.
 
 ```{r}
 data_path <- file.path(basePath, "Data")
+str_glue("Using data from {data_path}")
+stopifnot(dir.exists(data_path))
 ```
 
-Set output data directory.
+Set output data directory and create if it does not exist.
 
 ```{r}
 datestamp <- str_remove_all(Sys.Date(), "-")
 output_dir <- file.path(basePath, "Results", str_glue("{datestamp}_output"))
+str_glue("Output directory path is {output_dir}")
+stopifnot(dir.exists(output_dir))
 ```
 
 ### Define functions

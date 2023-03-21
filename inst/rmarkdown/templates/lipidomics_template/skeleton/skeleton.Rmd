@@ -38,28 +38,26 @@ source("../functions/transpose_tibble.R")
 Set base path to the project that is used in the analysis.
 
 ```{r}
-if(Sys.getenv("USERNAME") == "leegwaterh"){
-  basePath = "C:/Users/leegwaterh/surfdrive/Projects/Lipidomics"
-} else if(Sys.getenv("USERNAME") == "hanne"){
-  basePath = "C:/Users/hanne/surfdrive/Projects/Lipidomics"
-} else{
-  basePath = normalizePath("../..")
-  stop("User unknown. Add path to code folder in the if/else loop")
-}
-str_glue("Base path is {basePath}")
+base_path = str_glue("C:/Users/{Sys.getenv('USERNAME')}/surfdrive/Projects/Lipidomics")
+str_glue("Base path is {base_path}")
+stopifnot(dir.exists(base_path))
 ```
 
 Set input data directory.
 
 ```{r}
-data_path <- file.path(basePath, "Data", "Lipidomics")
+data_path <- file.path(base_path, "Data", "Lipidomics")
+str_glue("Using data from {data_path}")
+stopifnot(dir.exists(data_path))
 ```
 
-Set output data directory.
+Set output data directory and create if it does not exist.
 
 ```{r}
 datestamp <- str_remove_all(Sys.Date(), "-")
-output_dir <- file.path(basePath, "Results", str_glue("{datestamp}_output"))
+output_dir <- file.path(base_path, "Results", str_glue("{datestamp}_output"))
+str_glue("Output directory path is {output_dir}")
+stopifnot(dir.exists(output_dir))
 ```
 
 ### Define functions
@@ -121,7 +119,7 @@ data_cell_lines_list$POS[1:5,1:5]
 ### Information on lipid classes
 
 ```{r}
-lipid_info <- read_csv(file.path(basePath, "Data", "Metadata", "annotated_lipid_dictionary_info.csv"))
+lipid_info <- read_csv(file.path(base_path, "Data", "Metadata", "annotated_lipid_dictionary_info.csv"))
 head(lipid_info)
 ```
 
