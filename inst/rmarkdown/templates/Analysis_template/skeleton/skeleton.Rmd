@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 2
     toc_float: true
-    df_print: paged
+    df_print: kable
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
@@ -29,6 +29,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 
 ```{r}
 library(tidyverse)
+library(here)
 library(mixOmics)
 library(pheatmap)
 library(cowplot)
@@ -36,27 +37,25 @@ library(cowplot)
 
 ### Set input and output directories
 
-Set base path to the project that is used in the analysis.
+Show base path to the project that is used in the analysis.
 
 ```{r}
-basePath = str_glue("C:/Users/{Sys.getenv('USERNAME')}/surfdrive/Projects/Lipidomics")
-str_glue("Base path is {basePath}")
-stopifnot(dir.exists(basePath))
+here()
 ```
 
 Set input data directory.
 
 ```{r}
-data_path <- file.path(basePath, "Data")
-str_glue("Using data from {data_path}")
-stopifnot(dir.exists(data_path))
+data_dir <- here("data")
+str_glue("Using data from {data_dir}")
+stopifnot(dir.exists(data_dir))
 ```
 
 Set output data directory and create if it does not exist.
 
 ```{r}
 datestamp <- str_remove_all(Sys.Date(), "-")
-output_dir <- file.path(basePath, "Results", str_glue("{datestamp}_output"))
+output_dir <- here("results", str_glue("{datestamp}_output"))
 str_glue("Output directory path is {output_dir}")
 stopifnot(dir.exists(output_dir))
 ```
