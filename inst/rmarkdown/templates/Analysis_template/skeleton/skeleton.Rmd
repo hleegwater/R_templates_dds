@@ -11,17 +11,19 @@ output:
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
-# Goals/Aims
+# Assay Template Used
 
-# Background and data sources
+DDS Beltman - In Silico Experiment v0.1.1
+
+# Description or Purpose
 
 ## Background
 
 ## Data sources
 
-# Analysis plan
+## Analysis plan
 
-# Methods and Results
+# Results
 
 ## 0. Preparations
 
@@ -68,4 +70,4 @@ stopifnot(dir.exists(output_dir))
 
 ## Doubts and limitations
 
-# Future assays
+## Future assays
