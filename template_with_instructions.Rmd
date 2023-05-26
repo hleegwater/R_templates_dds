@@ -1,0 +1,105 @@
+---
+title: "Instruction template to connect Rmd to Rspace"
+author: "Hanneke Leegwater"
+date: "`r Sys.Date()`"
+output:   
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    df_print: kable
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
+---
+
+# Template instructions
+
+This is an Rmd file that has similar headings to the template used in Rspace. As long as you keep main headings (everything with a single \#) the same as in this template, you can play as much as you want with other heading levels (##, \###). You can use the Rspace API to upload the knitted report to Rspace.
+
+Be aware that that template has even more sections, but you have to fill those in yourself, like the path to your code, or external instructions.
+
+**DO:**
+
+-   Check if the version number in this document is the same as the most recent template you should use.
+-   Code things like usual
+-   Knit the file to a html report.
+
+**DONT:**
+
+-   Change the headings with one \# or add more main headings!!!!! Consult the data steward if you do not like the headings, because these are the DDS2 standards and we have to keep standards.
+
+# Assay Template Used
+
+DDS Beltman - In Silico Experiment v0.1.1
+
+# Description or Purpose
+
+For example the following sub-headers
+
+## Background
+
+## Data sources
+
+## Analysis plan
+
+# Results
+
+I like numbering sections, but you do you.
+
+## 0. Preparations
+
+### Load R libraries
+
+```{r}
+library(tidyverse)
+library(here)
+library(mixOmics)
+library(pheatmap)
+library(cowplot)
+```
+
+### Set input and output directories
+
+Show base path to the project that is used in the analysis.
+
+Pro tip: The here package is awesome to use relative paths within an R project.
+
+```{r}
+here()
+```
+
+Set input data directory.
+
+```{r}
+data_dir <- here("data")
+str_glue("Using data from {data_dir}")
+#stopifnot(dir.exists(data_dir))
+```
+
+Set output data directory and create if it does not exist. This is an example to get the date in the output folder
+
+```{r}
+datestamp <- str_remove_all(Sys.Date(), "-")
+output_dir <- here("results", str_glue("{datestamp}_output"))
+str_glue("Output directory path is {output_dir}")
+#stopifnot(dir.exists(output_dir))
+```
+
+### Define functions
+
+I like having my in-script functions all together.
+
+## 1. Load data
+
+## 2. More stuff
+
+# Conclusion
+
+I like writing down conclusions here
+
+## Doubts and limitations
+
+And then my doubts or things I forgot here.
+
+## Future assays
+
+And a to do list

@@ -10,7 +10,10 @@ import json
 import re
 
 input_file = input("Name of R markdown file to convert: ")
+input_template = input("Name of Json to put data into: ")
 input_file = input_file.replace(".html", "")
+input_template = input_template.replace(".json", "")
+
 with open(input_file + ".html") as html_file:
     html = html_file.read()
 
@@ -40,7 +43,7 @@ def get_conclusion(html):
     return(result.group(1))
 
 # Read template
-with open("SD241635.json", "r") as json_file:
+with open(input_template + ".json", "r") as json_file:
     json_template = json.load(json_file)
 
 # Extract template parts
@@ -75,6 +78,6 @@ for nr in range(0,len(json_template["fields"])):
         json_template["fields"][nr]["content"] = result
     
 # Write to json
-with open(input_file + ".json", "w") as json_file:
+with open(input_template + ".json", "w") as json_file:
     json.dump(json_template, json_file)
     print("done")
