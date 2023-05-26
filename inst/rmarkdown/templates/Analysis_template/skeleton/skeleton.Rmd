@@ -1,0 +1,22 @@
+---
+title: ""
+author: ""
+date: "`r Sys.Date()`"
+output:   
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    df_print: kable
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
+---
+
+# Assay Template Used
+
+DDS Beltman - In Silico Experiment v0.1.1
+
+# Description or Purpose
+
+# Results
+
+# Conclusion
