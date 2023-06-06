@@ -13,7 +13,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 
 # Assay Template Used
 
-DDS Beltman - In Silico Experiment v0.1.1
+DDS Beltman - In Silico Experiment v1.0.0
 
 # Description or Purpose
 

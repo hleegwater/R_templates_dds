@@ -11,9 +11,9 @@ output:
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
-# Assay Template Used
+# Template Used
 
-DDS Beltman - In Silico Experiment v0.1.1
+DDS Beltman - In Silico Experiment v1.0.0
 
 # Description or Purpose
 
