@@ -71,3 +71,15 @@ stopifnot(dir.exists(output_dir))
 ## Doubts and limitations
 
 ## Future assays
+
+# Source code
+
+<https://github.com/hleegwater/>... and Jdrive Hanneke/Investigations/
+
+# External References
+
+# Internal References
+
+```{r}
+sessionInfo()
+```

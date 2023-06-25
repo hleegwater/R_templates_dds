@@ -27,9 +27,9 @@ Be aware that that template has even more sections, but you have to fill those i
 
 -   Change the headings with one \# or add more main headings!!!!! Consult the data steward if you do not like the headings, because these are the DDS2 standards and we have to keep standards.
 
-# Assay Template Used
+# Template Used
 
-DDS Beltman - In Silico Experiment v0.1.1
+DDS Beltman - In Silico Experiment v1.0.0
 
 # Description or Purpose
 
@@ -86,7 +86,7 @@ str_glue("Output directory path is {output_dir}")
 
 ### Define functions
 
-I like having my in-script functions all together.
+I like having my in-script functions all together, so that I can later decide to move them to separate scripts. Also, I want to source external functions here, or when importing libraries.
 
 ## 1. Load data
 
@@ -103,3 +103,17 @@ And then my doubts or things I forgot here.
 ## Future assays
 
 And a to do list
+
+# Source code
+
+Link to the github repository or Jdrive file path where someone can find all code.
+
+# External References
+
+# Internal References
+
+I use sessioninfo here for now, not sure what to add here.
+
+```{r}
+sessionInfo()
+```

@@ -1,4 +1,5 @@
 name: DDS Beltman - In Silico Experiment v1.0.0
 description: >
-   Template that can be used in Rspace ELN
+   Template that can be used in Rspace ELN. Note that the title and date will
+   be generated in the Rmd report, so they are not included as headers in the Rmd file.
 create_dir: FALSE

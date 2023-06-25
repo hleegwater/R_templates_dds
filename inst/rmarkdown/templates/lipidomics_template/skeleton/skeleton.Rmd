@@ -7,19 +7,23 @@ output:
     toc: true
     toc_depth: 2
     toc_float: true
-    df_print: paged
+    df_print: kable
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
-# Aim
+# Assay Template Used
 
-# Background and data sources
+DDS Beltman - In Silico Experiment v1.0.0
+
+# Description or Purpose
 
 ## Background
 
 ## Data sources
 
-# Analysis
+## Analysis plan
+
+# Results
 
 ## 0. Preparations
 
@@ -27,6 +31,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 
 ```{r}
 library(tidyverse)
+library(here)
 library(mixOmics)
 library(pheatmap)
 library(cowplot)
@@ -35,27 +40,25 @@ source("../functions/transpose_tibble.R")
 
 ### Set input and output directories
 
-Set base path to the project that is used in the analysis.
+Show base path to the project that is used in the analysis.
 
 ```{r}
-base_path = str_glue("C:/Users/{Sys.getenv('USERNAME')}/surfdrive/Projects/Lipidomics")
-str_glue("Base path is {base_path}")
-stopifnot(dir.exists(base_path))
+here()
 ```
 
 Set input data directory.
 
 ```{r}
-data_path <- file.path(base_path, "Data", "Lipidomics")
-str_glue("Using data from {data_path}")
-stopifnot(dir.exists(data_path))
+data_dir <- here("data/lipidomics")
+str_glue("Using data from {data_dir}")
+stopifnot(dir.exists(data_dir))
 ```
 
 Set output data directory and create if it does not exist.
 
 ```{r}
 datestamp <- str_remove_all(Sys.Date(), "-")
-output_dir <- file.path(base_path, "Results", str_glue("{datestamp}_output"))
+output_dir <- here("results", str_glue("{datestamp}_output"))
 str_glue("Output directory path is {output_dir}")
 stopifnot(dir.exists(output_dir))
 ```
@@ -126,3 +129,17 @@ head(lipid_info)
 # Conclusion
 
 ## Doubts and limitations
+
+## Future assays
+
+# Source code
+
+<https://github.com/hleegwater/>... and Jdrive Hanneke/Investigations/
+
+# External References
+
+# Internal References
+
+```{r}
+sessionInfo()
+```
