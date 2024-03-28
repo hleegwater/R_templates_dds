@@ -11,23 +11,23 @@ output:
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
 ---
 
-# Assay Template Used
+## Assay Template Used
 
 DDS Beltman - In Silico Experiment v1.0.0
 
-# Description or Purpose
+## Description or Purpose
 
-## Background
+### Background
 
-## Data sources
+### Data sources
 
-## Analysis plan
+### Analysis plan
 
-# Results
+## Results
 
-## 0. Preparations
+### 0. Preparations
 
-### Load R libraries
+#### Load R libraries
 
 ```{r}
 library(tidyverse)
@@ -38,7 +38,7 @@ library(cowplot)
 source("../functions/transpose_tibble.R")
 ```
 
-### Set input and output directories
+#### Set input and output directories
 
 Show base path to the project that is used in the analysis.
 
@@ -63,9 +63,9 @@ str_glue("Output directory path is {output_dir}")
 stopifnot(dir.exists(output_dir))
 ```
 
-### Define functions
+#### Define functions
 
-## 1. Load data
+### 1. Load data
 
 Metadata for the 2DG treatment study:
 
@@ -119,26 +119,26 @@ data_cell_lines_list <- list(
 data_cell_lines_list$POS[1:5,1:5]
 ```
 
-### Information on lipid classes
+#### Information on lipid classes
 
 ```{r}
 lipid_info <- read_csv(file.path(base_path, "Data", "Metadata", "annotated_lipid_dictionary_info.csv"))
 head(lipid_info)
 ```
 
-# Conclusion
+## Conclusion
 
-## Doubts and limitations
+### Doubts and limitations
 
-## Future assays
+### Future assays
 
-# Source code
+## Source code
 
 <https://github.com/hleegwater/>... and Jdrive Hanneke/Investigations/
 
-# External References
+## External References
 
-# Internal References
+## Internal References
 
 ```{r}
 sessionInfo()
