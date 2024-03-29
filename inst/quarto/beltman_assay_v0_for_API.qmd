@@ -1,0 +1,42 @@
+---
+title: "DDS Beltman - In Silico Assay"
+engine: knitr
+format: 
+  html:
+    self-contained: true
+
+---
+
+## Template Used
+
+DDS Beltman - In Silico Assay v1.0.0
+
+## Title
+
+`{r} rmarkdown::metadata$title`
+
+## Date (dd-MM-yyyy)
+
+`{r} format(Sys.time(), format = "%d-%m-%Y")`
+
+## Description or Purpose
+
+To test out the Quarto template
+
+## Results
+
+```{r}
+plot(cars)
+```
+
+
+## Conclusion
+
+Awesome
+
+
+## Source code
+
+## External References
+
+## Internal References
