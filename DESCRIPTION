@@ -1,12 +1,18 @@
 Package: RMarkdownTemplateHanneke
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: R markdown templates for research
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Hanneke", "Leegwater",
+           email = "h.leegwater@lacdr.leidenuniv.nl",
+           role = c("aut", "cre"), 
+           comment = c(ORCID = "0000-0001-6003-1544"))
+            ),
+    person("Gerhard", "Burger", 
+           email = "burger.ga@gmail.com", 
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0003-1062-5576"))
+Description: R markdown templates for research at the LACDR. These templates have similar headers to the agreements we made at our division, or they can be custom made.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
