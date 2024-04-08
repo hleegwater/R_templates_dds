@@ -4,7 +4,6 @@ engine: knitr
 format: 
   html:
     self-contained: true
-
 ---
 
 ## Template Used
@@ -13,11 +12,11 @@ DDS Beltman - In Silico Assay v1.0.0
 
 ## Title
 
-`{r} rmarkdown::metadata$title`
+`r rmarkdown::metadata$title`
 
 ## Date (dd-MM-yyyy)
 
-`{r} format(Sys.time(), format = "%d-%m-%Y")`
+`r format(Sys.time(), format = "%d-%m-%Y")`
 
 ## Description or Purpose
 

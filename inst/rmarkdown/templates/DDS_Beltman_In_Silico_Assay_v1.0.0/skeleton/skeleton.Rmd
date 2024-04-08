@@ -2,6 +2,10 @@
 title: ""
 author: ""
 date: "`r Sys.Date()`"
+# engine: knitr
+# format: 
+#   html:
+#     self-contained: true
 output:   
   html_document:
     toc: true
@@ -14,6 +18,14 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 ## Template Used
 
 DDS Beltman - In Silico Experiment v1.0.0
+
+## Title
+
+`r rmarkdown::metadata$title`
+
+## Date (dd-MM-yyyy)
+
+`r format(Sys.time(), format = "%d-%m-%Y")`
 
 ## Description or Purpose
 
