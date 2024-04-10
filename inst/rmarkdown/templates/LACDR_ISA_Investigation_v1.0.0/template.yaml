@@ -1,0 +1,4 @@
+name: LACDR-ISA - Investigation v1.0.0
+description: >
+   Template that can be used in Rspace ELN. 
+create_dir: FALSE

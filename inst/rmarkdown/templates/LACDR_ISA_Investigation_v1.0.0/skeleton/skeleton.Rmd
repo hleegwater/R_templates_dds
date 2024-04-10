@@ -1,0 +1,53 @@
+---
+title: ""
+author: ""
+date: "`r Sys.Date()`"
+engine: knitr
+output:   
+  html_document:
+    self-contained: true
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    df_print: kable
+---
+
+## Template Used
+
+LACDR-ISA - Investigation v1.0.0
+
+## Title
+
+A concise name given to the investigation.
+
+## Description
+
+A textual description of the investigation.
+
+For example the aim, objectives, research question.
+
+## Publications
+
+A list of Publications relating to the investigation.
+
+Or RP1 thesises
+
+## Contacts/role
+
+A list of Contacts relating to the investigation.
+
+For each person, write down:
+
+-   Name
+-   Email
+-   Phone
+-   ORCID
+-   Address
+-   Affiliation
+-   Roles
+
+## Storage location
+
+Links/paths where this investigation's data is stored (J drive / Research Drive)
+
+## Additional information
