@@ -1,11 +1,10 @@
-# Making a package to get an Rmd template
+# R markdown templates used at DDS2
 
-Hanneke Leegwater. June 2022
+Hanneke Leegwater. April 2024
 
 ## Install templates directly in R studio
 
 -   Open your R studio, or a specific R project with renv.
-
 -   Install the templates using:
 
 `remotes::install_github("hleegwater/RMarkdownTemplateHanneke")`
