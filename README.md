@@ -7,7 +7,7 @@ Hanneke Leegwater. April 2024
 -   Open your R studio, or a specific R project with renv.
 -   Install the templates using:
 
-`remotes::install_github("hleegwater/RMarkdownTemplateHanneke")`
+`remotes::install_github("hleegwater/R_templates_dds")`
 
 ## Install when you want to add your custom templates
 
