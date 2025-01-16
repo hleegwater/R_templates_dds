@@ -1,6 +1,6 @@
 # R markdown templates used at DDS2
 
-Hanneke Leegwater. April 2024
+Hanneke Leegwater. January 2025
 
 ## Install templates directly in R studio
 

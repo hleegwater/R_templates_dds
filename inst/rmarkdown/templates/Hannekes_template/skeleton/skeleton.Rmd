@@ -2,14 +2,10 @@
 title: ""
 author: "Hanneke Leegwater"
 date: "`r Sys.Date()`"
-# engine: knitr
-# format: 
-#   html:
-#     self-contained: true
 output:   
   html_document:
     toc: true
-    toc_depth: 2
+    toc_depth: 3
     toc_float: true
     df_print: kable
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = stringr::str_replace(inputFile, ".Rmd",paste0("_", stringr::str_remove_all(Sys.Date(),"-"),'.html'))) })
@@ -17,7 +13,7 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 
 ## Template Used
 
-DDS Beltman - In Silico Experiment v1.0.0
+LACDR-ISA - Assay (General) v1.0.0
 
 ## Title
 
@@ -44,9 +40,14 @@ DDS Beltman - In Silico Experiment v1.0.0
 ```{r}
 library(tidyverse)
 library(here)
-library(mixOmics)
-library(pheatmap)
 library(cowplot)
+```
+
+#### Visualization settings for the report
+
+```{r}
+options(digits = 3) # visualizations of tables
+theme_set(theme_classic())
 ```
 
 #### Set input and output directories
@@ -57,24 +58,24 @@ Show base path to the project that is used in the analysis.
 here()
 ```
 
-Set input data directory.
-
-```{r}
-data_dir <- here("data")
-str_glue("Using data from {data_dir}")
-stopifnot(dir.exists(data_dir))
-```
-
 Set output data directory and create if it does not exist.
 
 ```{r}
 datestamp <- str_remove_all(Sys.Date(), "-")
 output_dir <- here("results", str_glue("{datestamp}_output"))
 str_glue("Output directory path is {output_dir}")
-stopifnot(dir.exists(output_dir))
+if(!dir.exists(output_dir)) dir.create(output_dir)
 ```
 
 #### Define functions
+
+Change write_csv so that it always writes na as "".
+
+```{r}
+write_csv <- function(data, file, ...) {
+  readr::write_csv(data, file, na = "", ...)
+}
+```
 
 ### 1. Load data
 
@@ -84,14 +85,19 @@ stopifnot(dir.exists(output_dir))
 
 ### Future assays
 
-## Source code
+## Additional information
 
-<https://github.com/hleegwater/>... and Jdrive Hanneke/Investigations/
-
-## External References
-
-## Internal References
+### Session info
 
 ```{r}
 sessionInfo()
+```
+
+Remove output dir if it is empty, so when nothing is saved to it.
+
+```{r}
+if(dir.exists(output_dir) & length(dir(output_dir)) == 0){
+  unlink(output_dir, recursive = T)
+  print(str_glue("output dir {output_dir} removed"))
+}
 ```
